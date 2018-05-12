@@ -3,6 +3,14 @@ dist: trusty
 mono: none
 dotnet: 2.1.200
 script:
-  - dotnet restore
-  - npm install
-  - dotnet build
+- dotnet restore
+- npm install
+- dotnet ./SonarCloud/SonarScanner.MSBuild.dll begin /k:"KekManager"
+- dotnet build
+- dotnet ./SonarCloud/SonarScanner.MSBuild.dll end
+addons:
+  sonarcloud:
+    organization: "KekManager" # the key of the org you chose at step #3
+    token:
+      secure: IADGaKPkm4VpqTl7+mXhhcaH097gtUPPLZLlMMOvL2s5o1uuxD6V73C1Z2xmHnAqBi5zPJUBSag5igoBPrQSM+AymS8Q++apJhLkERkFB6eWP4bSijXhJBqHyXs5aJecPreRqi01f7DJ0McXiUSIXaTc9230ZRO6BIdPVAWAbjMCeXM1Z2+FGNiT88C5/vp/VdClH4zNOc3ixLS874HwGwxDFGlqMLn7bU7Tu/QwuKgWgVYK2Bc3dkVwBa593ynbT/79+TYaPtWTHBR+IbmzhOdU9ZtOxm1d7zXvJUqPxwhyNvpC8npIPYKP4vB53uhJU9/kv0aPRkDbzgYl5etTGV43ompWa5OrNB1g5SdE94Y5khrgNuxfe+Cg66Q/Q4sUnA+G2E2Y6xVuAPyJ69WuT3h0WTwPTxLLUmsTmq5J7MsUDpAyLm896/AktbwaqY5NDBYG4ggNJvpz244kJTpA9INs2976OfKt5kGn5KFARB28dIFjE0s50LDDcuP05vHOT+H2eSImeVWgwjhwM/A/QxF/62qw5OYvkhyLkJpErlKDRylNQf/CIqR/qWmAGOJuTQ/SHUOf9GMt0M8dIkAkHFmzs/iFv9ryK4Qw3wF+hNz3oaVh/mfN/FWtHx69i0uT8r+kG0QiOnk8c/gBGdurY8QZNfHTim8CWPJj755qae8=
+      secure: ********* # encrypted value of your token
