@@ -1,3 +1,5 @@
+# KekManager [![Build Status](https://travis-ci.com/Eragra3/architecture.svg?branch=master)](https://travis-ci.com/Eragra3/architecture)
+
 # Installation
 
 ## Prerequisites
