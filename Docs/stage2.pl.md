@@ -1,0 +1,4 @@
+- Niedziela 20
+- dokument architektoniczny
+- podział funkcjonalny (na dll)
+- 1 przypadek
