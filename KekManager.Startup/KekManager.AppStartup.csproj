@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>KekManager.AppStartup</AssemblyName>
+    <RootNamespace>KekManager.AppStartup</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KekManager.Api\KekManager.Api.csproj" />
+    <ProjectReference Include="..\KekManager.Security\KekManager.Security.csproj" />
+  </ItemGroup>
+
+</Project>

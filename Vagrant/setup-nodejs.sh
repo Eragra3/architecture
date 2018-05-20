@@ -2,7 +2,7 @@
 
 # NODE JS SETUP
 
-echo Installing Node Version Manager
+echo Installing NodeJS
 
 curl -sL https://rpm.nodesource.com/setup_6.x | bash -
 

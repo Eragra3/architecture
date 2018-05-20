@@ -1,9 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.1
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "architecture", "KekManager.Architecture\architecture.csproj", "{2BCFF3B9-3492-4389-953F-1D54C8A29DD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KekManager.Api", "KekManager.Api\KekManager.Api.csproj", "{64E32BAC-724E-45C2-964A-190A7F622DE0}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F2277AC3-BA19-42D0-9799-20A429BE5EAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{14E1116C-6F0C-42D9-8F6D-5F98FCAE2B49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinessLogic", "BusinessLogic", "{F93689CB-E059-4D35-AD93-A3AF3ED6BAD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{0CEEF191-3E68-4612-BACF-8A6D04408049}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KekManager.AppStartup", "KekManager.Startup\KekManager.AppStartup.csproj", "{EE0B6656-DEE0-4383-9DC8-4E474CB1B0F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KekManager.Security", "KekManager.Security\KekManager.Security.csproj", "{4F9378F1-D82E-4933-A6C5-246E61458203}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{3796E77D-0D75-49A4-80C9-FF75D14D81C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +25,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2BCFF3B9-3492-4389-953F-1D54C8A29DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BCFF3B9-3492-4389-953F-1D54C8A29DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BCFF3B9-3492-4389-953F-1D54C8A29DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BCFF3B9-3492-4389-953F-1D54C8A29DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64E32BAC-724E-45C2-964A-190A7F622DE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64E32BAC-724E-45C2-964A-190A7F622DE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64E32BAC-724E-45C2-964A-190A7F622DE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64E32BAC-724E-45C2-964A-190A7F622DE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2277AC3-BA19-42D0-9799-20A429BE5EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2277AC3-BA19-42D0-9799-20A429BE5EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2277AC3-BA19-42D0-9799-20A429BE5EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2277AC3-BA19-42D0-9799-20A429BE5EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE0B6656-DEE0-4383-9DC8-4E474CB1B0F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE0B6656-DEE0-4383-9DC8-4E474CB1B0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE0B6656-DEE0-4383-9DC8-4E474CB1B0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE0B6656-DEE0-4383-9DC8-4E474CB1B0F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F9378F1-D82E-4933-A6C5-246E61458203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F9378F1-D82E-4933-A6C5-246E61458203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F9378F1-D82E-4933-A6C5-246E61458203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F9378F1-D82E-4933-A6C5-246E61458203}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64E32BAC-724E-45C2-964A-190A7F622DE0} = {14E1116C-6F0C-42D9-8F6D-5F98FCAE2B49}
+		{F2277AC3-BA19-42D0-9799-20A429BE5EAE} = {14E1116C-6F0C-42D9-8F6D-5F98FCAE2B49}
+		{4F9378F1-D82E-4933-A6C5-246E61458203} = {3796E77D-0D75-49A4-80C9-FF75D14D81C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C305A29-7FD5-421A-A8A5-3E4844858F38}
