@@ -1,5 +1,5 @@
 #!/bin/sh
 
 cd Web\
-npm install 
-npm run build
+npm install
+npm run build4prod
