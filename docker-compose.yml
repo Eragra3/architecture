@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  kekmanager.api:
-    image: kekmanager.api
-    build:
-      context: ./KekManager.Api
-      dockerfile: Dockerfile
