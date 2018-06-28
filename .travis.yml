@@ -14,3 +14,7 @@ script:
   - dotnet ./SonarCloud/SonarScanner.MSBuild.dll begin /k:"KekManager" /n:"" /d:sonar.organization="eragra3-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="ee89d26215f97e2f576e0577e990cc8ecb1c2d2c"
   - dotnet build KekManager.sln
   - dotnet ./SonarCloud/SonarScanner.MSBuild.dll end /d:sonar.login="ee89d26215f97e2f576e0577e990cc8ecb1c2d2c"
+cache:
+  directories:
+    # Replace "grunt-cli" with whatever global binary you're using
+    - $(npm config get prefix)/lib/node_modules
