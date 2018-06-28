@@ -4,6 +4,8 @@ mono: none
 dotnet: 2.1.200
 before_install:
   - chmod +x ./SonarCloud/sonar-scanner-3.1.0.1141/bin/sonar-scanner
+before_script:
+  - npm install -g @angular/cli
 script:
   - dotnet restore
   - npm install Web/
