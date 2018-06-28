@@ -7,11 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using KekManager.Security.Data;
 using Microsoft.EntityFrameworkCore;
-using KekManager.Security.Models;
 using Microsoft.AspNetCore.Identity;
-using KekManager.Api.Services;
+using KekManager.Security.Data.Models;
+using KekManager.Database.Data;
 
 namespace KekManager.AppStartup
 {
@@ -27,15 +26,15 @@ namespace KekManager.AppStartup
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<FullDatabaseContext>(options =>
+                options.UseSqlServer(this.Configuration.GetConnectionString("KekManager")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<SecurityUser, IdentityRole>()
+                .AddEntityFrameworkStores<FullDatabaseContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
+            //services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
         }
