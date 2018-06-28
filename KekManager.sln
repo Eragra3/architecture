@@ -27,11 +27,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KekManager.Security.Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{C97C3D9C-9688-4A92-81EC-3D6C0F53B882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KekManager.Data", "KekManager.Dal\KekManager.Data.csproj", "{ED261133-2EDD-4CA3-867C-4F09B96D1F13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KekManager.Data", "KekManager.Dal\KekManager.Data.csproj", "{ED261133-2EDD-4CA3-867C-4F09B96D1F13}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Database.csproj", "{54BCAE84-8DA6-4BEF-BE93-8B9CE5F6E125}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KekManager.Security.Api", "Security\KekManager.Security.Api\KekManager.Security.Api.csproj", "{C00A61D6-5634-4EBC-900B-2D933E29709A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KekManager.DependancyRegistration", "KekManager.DependancyRegistration\KekManager.DependancyRegistration.csproj", "{59EB77BB-A8CA-41AE-A70C-E8946654E012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,12 @@ Global
 		{C00A61D6-5634-4EBC-900B-2D933E29709A}.Migrations|Any CPU.Build.0 = Migrations|Any CPU
 		{C00A61D6-5634-4EBC-900B-2D933E29709A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C00A61D6-5634-4EBC-900B-2D933E29709A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59EB77BB-A8CA-41AE-A70C-E8946654E012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59EB77BB-A8CA-41AE-A70C-E8946654E012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59EB77BB-A8CA-41AE-A70C-E8946654E012}.Migrations|Any CPU.ActiveCfg = Debug|Any CPU
+		{59EB77BB-A8CA-41AE-A70C-E8946654E012}.Migrations|Any CPU.Build.0 = Debug|Any CPU
+		{59EB77BB-A8CA-41AE-A70C-E8946654E012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59EB77BB-A8CA-41AE-A70C-E8946654E012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

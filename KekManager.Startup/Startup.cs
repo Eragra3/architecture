@@ -11,6 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using KekManager.Security.Data.Models;
 using KekManager.Database.Data;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using KekManager.DependancyRegistration;
 
 namespace KekManager.AppStartup
 {
@@ -24,7 +27,7 @@ namespace KekManager.AppStartup
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<FullDatabaseContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("KekManager")));
@@ -37,6 +40,14 @@ namespace KekManager.AppStartup
             //services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            // Add Autofac
+            var harvester = new DependancyHarvester();
+            var containerBuilder = harvester.Harvest();
+            containerBuilder.Populate(services);
+
+            var container = containerBuilder.Build();
+            return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
