@@ -7,7 +7,7 @@ node_js:
 before_install:
   - chmod +x ./SonarCloud/sonar-scanner-3.1.0.1141/bin/sonar-scanner
 before_script:
-  - npm install -g @angular/cli
+  - npm install -g @angular/cli@1.0.0-beta.28.3
 script:
   - dotnet restore KekManager.sln
   - sh build_client.sh
