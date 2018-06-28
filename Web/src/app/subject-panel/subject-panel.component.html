@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <h3>Subjects</h3>
+  <form *ngIf="lecturers && subjects" [formGroup]="form">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Administrator</th>
+      </tr>
+      </thead>
+      <tbody [formArrayName]="'lecturers'">
+      <tr *ngFor="let s of subjects; let i = index">
+        <td> {{ s.name }}</td>
+        <td><select [formControlName]="i">
+          <option [ngValue]=""></option>
+          <option *ngFor="let l of lecturers" [ngValue]="l">{{l.name + " " + l.surname}}</option>
+        </select></td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary" (click)="submit()">Save</button>
+  </form>
+</div>
