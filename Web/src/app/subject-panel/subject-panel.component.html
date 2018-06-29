@@ -13,7 +13,7 @@
         <td> {{ s.name }}</td>
         <td><select [formControlName]="i">
           <option [ngValue]=""></option>
-          <option *ngFor="let l of lecturers" [ngValue]="l">{{l.name + " " + l.surname}}</option>
+          <option *ngFor="let l of lecturers" [ngValue]="l.id">{{l.name + " " + l.surname}}</option>
         </select></td>
       </tr>
       </tbody>

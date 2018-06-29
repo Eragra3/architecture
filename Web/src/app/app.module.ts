@@ -6,17 +6,23 @@ import {ApiModule} from "./api/api.module";
 import {CollapseModule} from "ngx-bootstrap";
 import {SubjectPanelComponent} from './subject-panel/subject-panel.component';
 import {RouterModule, Routes} from "@angular/router";
+import {LearningProgramComponent} from './learning-program/learning-program.component';
+import {CreateLearningProgramComponent} from './create-learning-program/create-learning-program.component';
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/subjects', pathMatch: 'full'},
-  {path: 'subjects', component: SubjectPanelComponent}
+  {path: '', redirectTo: '/assign-lecturer', pathMatch: 'full'},
+  {path: 'assign-lecturer', component: SubjectPanelComponent},
+  {path: 'create-program', component: CreateLearningProgramComponent},
+  {path: 'learning-program', component: LearningProgramComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubjectPanelComponent
+    SubjectPanelComponent,
+    LearningProgramComponent,
+    CreateLearningProgramComponent
   ],
   imports: [
     BrowserModule,

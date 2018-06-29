@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <h3>Programy kształcenia</h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th>Specjalizacja</th>
+      <th>liczba semestrów</th>
+      <th>Poziom kształcenia</th>
+      <th>tryb</th>
+      <th>liczba godzin CNPS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of programs">
+      <td>{{p.name}}</td>
+      <td>{{p.specialization}}</td>
+      <td>{{p.numberOfSemesters}}</td>
+      <td>{{p.level}}</td>
+      <td>{{p.mode}}</td>
+      <td>{{p.CNPShours}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
