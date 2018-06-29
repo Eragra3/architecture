@@ -26,11 +26,14 @@
     <PackageReference Include="Autofac" Version="4.8.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KekManager.Api\KekManager.Api.csproj" />
     <ProjectReference Include="..\KekManager.DependancyRegistration\KekManager.DependancyRegistration.csproj" />
     <ProjectReference Include="..\Database\Database.csproj" />
+    <ProjectReference Include="..\Security\KekManager.Security.Api\KekManager.Security.Api.csproj" />
     <ProjectReference Include="..\Security\KekManager.Security.Dal\KekManager.Security.Data.csproj" />
   </ItemGroup>
 

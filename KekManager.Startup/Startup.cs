@@ -14,6 +14,9 @@ using KekManager.Database.Data;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using KekManager.DependancyRegistration;
+using System.Reflection;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.FileProviders;
 
 namespace KekManager.AppStartup
 {
@@ -39,7 +42,17 @@ namespace KekManager.AppStartup
             // Add application services.
             //services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
+            services
+                .AddMvc()
+                .AddApplicationPart(Assembly.Load("KekManager.Api"))
+                .AddApplicationPart(Assembly.Load("KekManager.Security.Api"));
+
+            // Fix resolving views from different assemblies
+            services.Configure<RazorViewEngineOptions>(options =>
+            {
+                options.FileProviders.Add(new EmbeddedFileProvider(Assembly.Load("KekManager.Api")));
+                options.FileProviders.Add(new EmbeddedFileProvider(Assembly.Load("KekManager.Security.Api")));
+            });
 
             // Add Autofac
             var harvester = new DependancyHarvester();
