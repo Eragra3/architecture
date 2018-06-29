@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <h3>Logowanie</h3>
+  <form #form="ngForm" (ngSubmit)="submit(form.value)">
+    <div class="form-group">
+      <label class="font-weight-bold" for="username">Nazwa uzytkownika:</label>
+      <input class="form-control" type="text" placeholder="nazwa uzytkownika" name="username" id="username" required
+             ngModel>
+    </div>
+    <div class="form-group">
+      <label class="font-weight-bold" for="password">Haslo:</label>
+      <input class="form-control" type="password" placeholder="Haslo" name="password" id="password" required ngModel>
+    </div>
+    <span style="color:red" *ngIf="showError">Wystąpił błąd przy logowaniu</span>
+    <button type="submit" class="btn btn-primary">Zaloguj</button>
+  </form>
+</div>

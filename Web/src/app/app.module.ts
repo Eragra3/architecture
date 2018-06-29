@@ -8,13 +8,15 @@ import {SubjectPanelComponent} from './subject-panel/subject-panel.component';
 import {RouterModule, Routes} from "@angular/router";
 import {LearningProgramComponent} from './learning-program/learning-program.component';
 import {CreateLearningProgramComponent} from './create-learning-program/create-learning-program.component';
+import {LoginComponent} from './login/login.component';
 
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/assign-lecturer', pathMatch: 'full'},
   {path: 'assign-lecturer', component: SubjectPanelComponent},
   {path: 'create-program', component: CreateLearningProgramComponent},
-  {path: 'learning-program', component: LearningProgramComponent}
+  {path: 'learning-program', component: LearningProgramComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -22,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     SubjectPanelComponent,
     LearningProgramComponent,
-    CreateLearningProgramComponent
+    CreateLearningProgramComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

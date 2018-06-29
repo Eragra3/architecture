@@ -2,29 +2,29 @@
   <h3>Utworz program</h3>
   <form #form="ngForm" (ngSubmit)="submit(form.value)">
     <div class="form-group">
-      <label for="name">Nazwa:</label>
+      <label class="font-weight-bold" for="name">Nazwa:</label>
       <input type="text" class="form-control" id="name" name="name" ngModel>
     </div>
     <div class="form-group">
-      <label for="specialization">Specjalizacja:</label>
+      <label class="font-weight-bold" for="specialization">Specjalizacja:</label>
       <input type="text" class="form-control" id="specialization" name="specialization" ngModel>
     </div>
     <div class="form-group">
-      <label for="numberOfSemesters">Liczba semestrow:</label>
+      <label class="font-weight-bold" for="numberOfSemesters">Liczba semestrow:</label>
       <input type="number" class="form-control" id="numberOfSemesters" name="numberOfSemesters" ngModel>
     </div>
     <div class="form-group">
-      <label for="level">Poziom studiow:</label>
+      <label class="font-weight-bold" for="level">Poziom studiow:</label>
       <select class="form-control" id="level" name="level" ngModel>
         <option *ngFor="let l of levels" [ngValue]="l">{{ l }}</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="cnps">Liczba godzin CNPS:</label>
+      <label class="font-weight-bold" for="cnps">Liczba godzin CNPS:</label>
       <input type="number" class="form-control" id="cnps" name="cnps" ngModel>
     </div>
     <div class="form-group">
-      <label for="mode">Tryb:</label>
+      <label class="font-weight-bold" for="mode">Tryb:</label>
       <select class="form-control" id="mode" name="mode" ngModel>
         <option *ngFor="let m of modes" [ngValue]="m">{{ m }}</option>
       </select>
