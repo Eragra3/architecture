@@ -1,0 +1,22 @@
+#navbarNav {
+  display: block !important;
+  overflow: hidden !important;
+  max-height: 1px !important;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar {
+  background-color: #9a1e13;
+}
+
+#navbarNav.show {
+  max-height: 230px !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+}

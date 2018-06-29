@@ -7,7 +7,9 @@ import 'rxjs/add/observable/of';
 @Injectable()
 export class SubjectService {
 
-  store: Subject[] = [];
+  store: Subject[] = [
+    new Subject(0, "Subject", 0)
+  ];
 
   constructor(http: HttpClient) {
 
