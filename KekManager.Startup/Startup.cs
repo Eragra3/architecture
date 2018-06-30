@@ -59,7 +59,6 @@ namespace KekManager.AppStartup
                 .AddJwtBearer(options =>
                 {
                     options.IncludeErrorDetails = true;
-                    options.SaveToken = true;
                     options.ClaimsIssuer = Configuration["Jwt:Issuer"];
                     options.TokenValidationParameters = new TokenValidationParameters
                     {

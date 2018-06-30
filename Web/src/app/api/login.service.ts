@@ -10,16 +10,15 @@ import "rxjs/add/operator/catch";
 @Injectable()
 export class LoginService {
 
-  private _isLoggedIn: boolean = false;
-  private _token: string;
   private _http: HttpClient;
+  
+  private _token: string;
+  private _expirationDate: Date;
 
   constructor(http: HttpClient) {
     this._http = http;  
     this._token = localStorage.getItem("token");
-    if (this._token != null) {
-      this._isLoggedIn = true;
-    }
+    this._expirationDate = new Date(localStorage.getItem("expirationDate"));
   }
 
   login(username: string, password: string): Observable<boolean> {
@@ -30,8 +29,27 @@ export class LoginService {
     )
     .map(response => {
       this._token = response.token;
+      this._expirationDate = new Date(response.expirationDate);
       localStorage.setItem("token", this._token);
-      this._isLoggedIn = true;
+      localStorage.setItem("expirationDate", this._expirationDate.toString());
+      return true;
+    })
+    .catch(err => {
+      return Observable.of(false);
+    });
+  }
+
+  refreshToken(): Observable<boolean> {
+    return this._http
+    .post<LoginResponse>(
+      environment.baseUrl + "api/security/account/refreshToken",
+      null
+    )
+    .map(response => {
+      this._token = response.token;
+      this._expirationDate = new Date(response.expirationDate);
+      localStorage.setItem("token", this._token);
+      localStorage.setItem("expirationDate", this._expirationDate.toString());
       return true;
     })
     .catch(err => {
@@ -41,12 +59,21 @@ export class LoginService {
   
   signOff() {
     localStorage.removeItem("token");
+    localStorage.removeItem("expirationDate");
     this._token = null;
-    this._isLoggedIn = false;
-}
+    this._expirationDate = null;
+  }
 
   isLoggedIn(): boolean {
-    return this._isLoggedIn;
+    return this._token != null && !this.isTokenExpired();
+  }
+
+  isTokenExpired(): boolean {
+    return this._expirationDate < new Date();
+  }
+
+  getExpirationDate() {
+    return this._expirationDate;
   }
 
   getToken() {

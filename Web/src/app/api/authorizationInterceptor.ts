@@ -10,12 +10,25 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //required to avoid cyclic dependency
-    console.log('interceptor activee');
     const loginService = this.inj.get(LoginService);
-    if (request.url != '/oauth/token') {
+
+    if (
+        !request.url.endsWith("account/refreshToken") &&
+        loginService.getToken() != null &&
+        loginService.getExpirationDate() < new Date(new Date().getTime() + 5 * 60000)
+       ) {
+        loginService.refreshToken().subscribe(success => {
+            if (!success) {
+                console.error("Failed to refresh token");
+            }
+        });
+    }
+
+    const token = loginService.getToken();
+    if (token != null) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${loginService.getToken()}`
+          Authorization: `Bearer ${token}`
         }
       });
     }

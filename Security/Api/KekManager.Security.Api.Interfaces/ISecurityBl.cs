@@ -1,5 +1,7 @@
-﻿using KekManager.Security.Domain;
+﻿using KekManager.Security.Api.Interfaces;
+using KekManager.Security.Domain;
 using Microsoft.AspNetCore.Identity;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
 
 namespace KekManager.Security.Logic
@@ -8,8 +10,10 @@ namespace KekManager.Security.Logic
     {
         Task<SignInResult> LoginAsync(string email, string password);
 
-        Task<string> GenerateTokenAsync(string email);
+        Task<GenerateTokenResult> GenerateTokenAsync(string email);
 
-        string GenerateToken(SecurityUser user);
+        GenerateTokenResult GenerateToken(SecurityUser user);
+
+        JwtSecurityToken ReadToken(string token);
     }
 }

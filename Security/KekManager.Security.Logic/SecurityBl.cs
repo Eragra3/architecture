@@ -1,4 +1,5 @@
-﻿using KekManager.Security.Domain;
+﻿using KekManager.Security.Api.Interfaces;
+using KekManager.Security.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -39,7 +40,7 @@ namespace KekManager.Security.Logic
             return await _signInManager.CheckPasswordSignInAsync(user, password, false);
         }
 
-        public async Task<string> GenerateTokenAsync(string email)
+        public async Task<GenerateTokenResult> GenerateTokenAsync(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
 
@@ -48,7 +49,7 @@ namespace KekManager.Security.Logic
             return GenerateToken(user);
         }
 
-        public string GenerateToken(SecurityUser user)
+        public GenerateTokenResult GenerateToken(SecurityUser user)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -58,13 +59,25 @@ namespace KekManager.Security.Logic
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+            var expirationDate = DateTime.Now.AddMinutes(30);
             var token = new JwtSecurityToken(_jwtIssuer,
               _jwtAudience,
               claims,
-              expires: DateTime.Now.AddMinutes(30),
+              expires: expirationDate,
               signingCredentials: creds);
 
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var result = new GenerateTokenResult
+            {
+                Token = new JwtSecurityTokenHandler().WriteToken(token),
+                ExpirationDate = expirationDate
+            };
+
+            return result;
+        }
+
+        public JwtSecurityToken ReadToken(string token)
+        {
+            return new JwtSecurityTokenHandler().ReadJwtToken(token);
         }
     }
 }
