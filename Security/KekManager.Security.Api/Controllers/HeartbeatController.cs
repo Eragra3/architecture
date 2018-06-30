@@ -14,15 +14,15 @@ namespace KekManager.Security.Api.Controllers
     {
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Hello()
+        public IActionResult Hello()
         {
-            return Ok();
+            return Ok(new { message = "Hello!" });
         }
 
         [HttpGet]
-        public async Task<IActionResult> SecretHello()
+        public IActionResult SecretHello()
         {
-            return Ok();
+            return Ok(new { message = "Hello! I see you are authorized :)." });
         }
     }
 }
