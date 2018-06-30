@@ -32,16 +32,16 @@ export class SubjectPanelComponent implements OnInit {
     if (this.subjects && this.lecturers) {
       this.form = this.fb.group({
         lecturers: this.fb.array(
-          this.subjects.map(s => this.fb.control({value: null}))
+          this.subjects.map(s => this.fb.control(s.id))
         )
       })
     }
   }
 
   submit() {
-    const lects: Lecturer[] = this.form.get('lecturers').value;
+    const lects: number[] = this.form.get('lecturers').value;
     lects.forEach((l, i) =>
-      this.subjectService.assignLecturer(this.subjects[i].id, l.id))
+      this.subjectService.assignLecturer(this.subjects[i].id, l))
   }
 
 }
