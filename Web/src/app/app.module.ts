@@ -9,7 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {LearningProgramComponent} from './learning-program/learning-program.component';
 import {CreateLearningProgramComponent} from './create-learning-program/create-learning-program.component';
 import {LoginComponent} from './login/login.component';
-
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/assign-lecturer', pathMatch: 'full'},
@@ -33,9 +33,11 @@ const appRoutes: Routes = [
     ApiModule,
     CollapseModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule  
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
