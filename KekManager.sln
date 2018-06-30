@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KekManager.Security.Domain"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KekManager.Security.Api.Interfaces", "Security\Api\KekManager.Security.Api.Interfaces\KekManager.Security.Api.Interfaces.csproj", "{EDB5BD63-3442-497E-AE09-F80688E28E97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KekManager.Domain", "KekManager.Domain\KekManager.Domain.csproj", "{F5062BD1-3BC5-4B83-9AF4-047848644167}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{EDB5BD63-3442-497E-AE09-F80688E28E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDB5BD63-3442-497E-AE09-F80688E28E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDB5BD63-3442-497E-AE09-F80688E28E97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5062BD1-3BC5-4B83-9AF4-047848644167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5062BD1-3BC5-4B83-9AF4-047848644167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5062BD1-3BC5-4B83-9AF4-047848644167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5062BD1-3BC5-4B83-9AF4-047848644167}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
