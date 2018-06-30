@@ -129,10 +129,10 @@ namespace KekManager.AppStartup
             {
                 var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
 
-                //dbInitializer
-                //    .Initialize()
-                //    .GetAwaiter()
-                //    .GetResult();
+                dbInitializer
+                    .Initialize()
+                    .GetAwaiter()
+                    .GetResult();
             }
 
             app.UseMvc(routes =>

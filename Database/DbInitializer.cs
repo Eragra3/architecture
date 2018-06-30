@@ -12,9 +12,9 @@ namespace KekManager.Database
 {
     public class DbInitializer : IDbInitializer
     {
-        private FullDatabaseContext _context;
-        private UserManager<SecurityUser> _userManager;
-        private RoleManager<IdentityRole> _roleManager;
+        private readonly FullDatabaseContext _context;
+        private readonly UserManager<SecurityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public DbInitializer(
             FullDatabaseContext context,
