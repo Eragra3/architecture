@@ -10,6 +10,8 @@ import {LearningProgramComponent} from './learning-program/learning-program.comp
 import {CreateLearningProgramComponent} from './create-learning-program/create-learning-program.component';
 import {LoginComponent} from './login/login.component';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthorizationInterceptor } from './api/authorizationInterceptor';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/assign-lecturer', pathMatch: 'full'},
@@ -36,7 +38,15 @@ const appRoutes: Routes = [
     ReactiveFormsModule  
   ],
   providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthorizationInterceptor,
+      multi: true
+}
   ],
   bootstrap: [AppComponent]
 })

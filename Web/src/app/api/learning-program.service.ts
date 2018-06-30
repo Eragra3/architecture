@@ -1,18 +1,27 @@
 import {Observable} from "rxjs/Observable";
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
+import { environment } from "environments/environment";
 
 @Injectable()
 export class LearningProgramService {
 
   store: LearningProgram[] = [];
 
-  constructor(http: HttpClient) {
+  constructor(private readonly _http: HttpClient) {
 
   }
 
   getList(): Observable<LearningProgram[]> {
-    return Observable.of(this.store);
+    return this._http
+    .get<LearningProgram[]>(environment.baseUrl + "api/learningPrograms")
+    .map(learningPrograms => {
+      this.store = learningPrograms;
+      return this.store;
+    })
+    .catch(err => {
+      return Observable.of(null);
+    });
   }
 
   create(program: LearningProgram): Observable<boolean> {
@@ -27,7 +36,6 @@ export class LearningProgramService {
   }
 
 }
-
 
 export class LearningProgram {
   constructor(public readonly id: number,
