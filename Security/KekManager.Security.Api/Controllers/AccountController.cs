@@ -12,11 +12,12 @@ using KekManager.Security.Api.Models.AccountViewModels;
 using KekManager.Security.Api.Services;
 using KekManager.Security.Domain;
 using KekManager.Security.Logic;
+using System.Net;
 
 namespace KekManager.Security.Api.Controllers
 {
     [Authorize]
-    [Route("[controller]/[action]")]
+    [Route("api/[controller]/[action]")]
     public class AccountController : Controller
     {
         private readonly ISecurityBl _securityBl;
@@ -35,11 +36,18 @@ namespace KekManager.Security.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await _securityBl.Login(model.Email, model.Password, model.RememberMe);
+            var result = await _securityBl.LoginAsync(model.Email, model.Password, model.RememberMe);
 
             if (result.Succeeded)
             {
-                return Ok();
+                string token = await _securityBl.GenerateTokenAsync(model.Email);
+
+                if (token == null)
+                {
+                    return StatusCode(500);
+                }
+
+                return Ok(new { token });
             }
             else if (result.IsLockedOut)
             {

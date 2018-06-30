@@ -18,6 +18,9 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.FileProviders;
 using KekManager.Security.Domain;
 using KekManager.Database;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace KekManager.AppStartup
 {
@@ -52,9 +55,25 @@ namespace KekManager.AppStartup
                 options.FileProviders.Add(new EmbeddedFileProvider(Assembly.Load("KekManager.Security.Api")));
             });
 
+            services
+                    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                    {
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidateLifetime = true,
+                            ValidateIssuerSigningKey = true,
+                            ValidIssuer = Configuration["Jwt:Issuer"],
+                            ValidAudience = Configuration["Jwt:Audience"],
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                        };
+                    });
+
             // Add Autofac
             var harvester = new DependancyHarvester();
-            var containerBuilder = harvester.Harvest();
+            var containerBuilder = harvester.Harvest(Configuration);
             containerBuilder.Populate(services);
             var container = containerBuilder.Build();
             return new AutofacServiceProvider(container);
@@ -74,9 +93,9 @@ namespace KekManager.AppStartup
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
-
             app.UseAuthentication();
+
+            app.UseStaticFiles();
 
             // Seed database
             // NOTE: you need to comment db seeding when using migrations, it may cause 'object not found' errors
