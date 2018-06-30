@@ -31,12 +31,12 @@ namespace KekManager.Security.Logic
             _jwtAudience = jwtAudience;
         }
 
-        public async Task<SignInResult> LoginAsync(string email, string password, bool rememberMe = false)
+        public async Task<SignInResult> LoginAsync(string email, string password)
         {
             //This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, set lockoutOnFailure: true
             var user = await _userManager.FindByEmailAsync(email);
-            return await _signInManager.PasswordSignInAsync(user, password, rememberMe, false);
+            return await _signInManager.CheckPasswordSignInAsync(user, password, false);
         }
 
         public async Task<string> GenerateTokenAsync(string email)
@@ -44,7 +44,7 @@ namespace KekManager.Security.Logic
             var user = await _userManager.FindByEmailAsync(email);
 
             if (user == null) return null;
-
+            await _signInManager.SignOutAsync();
             return GenerateToken(user);
         }
 
@@ -55,7 +55,8 @@ namespace KekManager.Security.Logic
 
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email)
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
             var token = new JwtSecurityToken(_jwtIssuer,
               _jwtAudience,

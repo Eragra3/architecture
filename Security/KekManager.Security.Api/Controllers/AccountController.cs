@@ -17,7 +17,7 @@ using System.Net;
 namespace KekManager.Security.Api.Controllers
 {
     [Authorize]
-    [Route("api/[controller]/[action]")]
+    [Route("api/security/[controller]/[action]")]
     public class AccountController : Controller
     {
         private readonly ISecurityBl _securityBl;
@@ -36,7 +36,7 @@ namespace KekManager.Security.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            var result = await _securityBl.LoginAsync(model.Email, model.Password, model.RememberMe);
+            var result = await _securityBl.LoginAsync(model.Email, model.Password);
 
             if (result.Succeeded)
             {

@@ -6,7 +6,7 @@ namespace KekManager.Security.Logic
 {
     public interface ISecurityBl
     {
-        Task<SignInResult> LoginAsync(string email, string password, bool rememberMe = false);
+        Task<SignInResult> LoginAsync(string email, string password);
 
         Task<string> GenerateTokenAsync(string email);
 
