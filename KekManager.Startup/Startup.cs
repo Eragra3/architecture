@@ -9,7 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using KekManager.Security.Data.Models;
 using KekManager.Database.Data;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
@@ -17,6 +16,8 @@ using KekManager.DependancyRegistration;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.FileProviders;
+using KekManager.Security.Domain;
+using KekManager.Database;
 
 namespace KekManager.AppStartup
 {
@@ -33,14 +34,11 @@ namespace KekManager.AppStartup
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<FullDatabaseContext>(options =>
-                options.UseSqlServer(this.Configuration.GetConnectionString("KekManager")));
+                options.UseSqlServer(Configuration.GetConnectionString("KekManager")));
 
             services.AddIdentity<SecurityUser, IdentityRole>()
                 .AddEntityFrameworkStores<FullDatabaseContext>()
                 .AddDefaultTokenProviders();
-
-            // Add application services.
-            //services.AddTransient<IEmailSender, EmailSender>();
 
             services
                 .AddMvc()
@@ -58,13 +56,13 @@ namespace KekManager.AppStartup
             var harvester = new DependancyHarvester();
             var containerBuilder = harvester.Harvest();
             containerBuilder.Populate(services);
-
+            containerBuilder.RegisterType<FullDatabaseContext>().AsSelf().InstancePerLifetimeScope();
             var container = containerBuilder.Build();
             return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public async void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -81,6 +79,16 @@ namespace KekManager.AppStartup
 
             app.UseAuthentication();
 
+            // Seed database
+            // NOTE: you need to comment db seeding when using migrations, it may cause 'object not found' errors
+            var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            using (var scope = scopeFactory.CreateScope())
+            {
+                var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+
+                await dbInitializer.Initialize();
+            }
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

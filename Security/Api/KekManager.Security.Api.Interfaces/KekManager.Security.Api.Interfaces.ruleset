@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="SonarQube - KekManager Sonar way" ToolsVersion="15.0">
+  <Include Path="..\..\..\.sonarlint\kekmanagercsharp.ruleset" Action="Default" />
+</RuleSet>

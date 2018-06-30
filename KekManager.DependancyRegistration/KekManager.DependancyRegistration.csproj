@@ -4,8 +4,24 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>KekManager.DependancyRegistration.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>KekManager.DependancyRegistration.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Database\KekManager.Database.csproj" />
+    <ProjectReference Include="..\KekManager.Dal\KekManager.Data.csproj" />
+    <ProjectReference Include="..\Security\Api\KekManager.Security.Api.Interfaces\KekManager.Security.Api.Interfaces.csproj" />
+    <ProjectReference Include="..\Security\KekManager.Security.Domain\KekManager.Security.Domain.csproj" />
+    <ProjectReference Include="..\Security\KekManager.Security.Logic\KekManager.Security.Logic.csproj" />
   </ItemGroup>
 
 </Project>

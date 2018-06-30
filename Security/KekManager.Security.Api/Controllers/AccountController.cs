@@ -10,16 +10,36 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using KekManager.Security.Api.Models.AccountViewModels;
 using KekManager.Security.Api.Services;
-//using KekManager.Security.Data.Models;
+using KekManager.Security.Domain;
+using KekManager.Security.Logic;
 
 namespace KekManager.Security.Api.Controllers
 {
-    //[Authorize]
-    //[Route("[controller]/[action]")]
-    //public class AccountController : Controller
-    //{
-    //    private readonly UserManager<SecurityUser> _userManager;
-    //    private readonly SignInManager<SecurityUser> _signInManager;
+    [Authorize]
+    [Route("[controller]/[action]")]
+    public class AccountController : Controller
+    {
+        private readonly ISecurityBl _securityBl;
+
+        public AccountController(ISecurityBl securityBl)
+        {
+            _securityBl = securityBl;
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login([FromBody] LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var result = await _securityBl.Login(model.Email, model.Password, model.RememberMe);
+
+            return Ok();
+        }
+    }
     //    private readonly IEmailSender _emailSender;
     //    private readonly ILogger _logger;
 

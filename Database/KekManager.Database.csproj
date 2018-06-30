@@ -3,18 +3,20 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Configurations>Debug;Release;Migrations</Configurations>
+    <AssemblyName>KekManager.Database</AssemblyName>
+    <RootNamespace>KekManager.Database</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <CodeAnalysisRuleSet>KekManager.Security.Data.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>KekManager.Database.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <CodeAnalysisRuleSet>KekManager.Security.Data.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>KekManager.Database.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Migrations|AnyCPU'">
-    <CodeAnalysisRuleSet>KekManager.Security.Data.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>KekManager.Database.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,14 +26,16 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\KekManager.Dal\KekManager.Data.csproj" />
+    <ProjectReference Include="..\Security\KekManager.Security.Dal\KekManager.Security.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KekManager.Security.Domain\KekManager.Security.Domain.csproj" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

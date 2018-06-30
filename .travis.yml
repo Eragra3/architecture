@@ -1,7 +1,7 @@
 language: csharp
 dist: trusty
 mono: none
-dotnet: 2.1.200
+dotnet: 2.1.301
 before_install:
   - chmod +x ./SonarCloud/sonar-scanner-3.1.0.1141/bin/sonar-scanner
 script:

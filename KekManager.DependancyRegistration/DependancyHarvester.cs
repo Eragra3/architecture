@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using KekManager.Security.Logic;
 using System;
 
 namespace KekManager.DependancyRegistration
@@ -8,6 +9,9 @@ namespace KekManager.DependancyRegistration
         public ContainerBuilder Harvest()
         {
             var containerBuilder = new ContainerBuilder();
+
+            containerBuilder.RegisterModule<SecurityModule>();
+            containerBuilder.RegisterModule<KekManagerModule>();
 
             return containerBuilder;
         }
