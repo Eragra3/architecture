@@ -37,7 +37,18 @@ namespace KekManager.Security.Api.Controllers
 
             var result = await _securityBl.Login(model.Email, model.Password, model.RememberMe);
 
-            return Ok();
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else if (result.IsLockedOut)
+            {
+                return UnprocessableEntity();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
     //    private readonly IEmailSender _emailSender;

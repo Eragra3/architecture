@@ -56,13 +56,12 @@ namespace KekManager.AppStartup
             var harvester = new DependancyHarvester();
             var containerBuilder = harvester.Harvest();
             containerBuilder.Populate(services);
-            containerBuilder.RegisterType<FullDatabaseContext>().AsSelf().InstancePerLifetimeScope();
             var container = containerBuilder.Build();
             return new AutofacServiceProvider(container);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public async void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -86,9 +85,12 @@ namespace KekManager.AppStartup
             {
                 var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
 
-                await dbInitializer.Initialize();
+                dbInitializer
+                    .Initialize()
+                    .GetAwaiter()
+                    .GetResult();
             }
-            
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -16,11 +16,12 @@ namespace KekManager.Security.Logic
             _signInManager = signInManager;
         }
 
-        public async Task<SignInResult> Login(string userName, string password, bool rememberMe = false)
+        public async Task<SignInResult> Login(string email, string password, bool rememberMe = false)
         {
             //This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-            return await _signInManager.PasswordSignInAsync(userName, password, rememberMe, lockoutOnFailure: false);
+            var user = await _userManager.FindByEmailAsync(email);
+            return await _signInManager.PasswordSignInAsync(user, password, rememberMe, false);
         }
     }
 }
