@@ -71,6 +71,16 @@ namespace KekManager.AppStartup
                         };
                     });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader()
+                      .AllowCredentials()
+                .Build());
+            });
+
             // Add Autofac
             var harvester = new DependancyHarvester();
             var containerBuilder = harvester.Harvest(Configuration);
@@ -94,6 +104,8 @@ namespace KekManager.AppStartup
             }
 
             app.UseAuthentication();
+
+            app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
 
