@@ -23,6 +23,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using Newtonsoft.Json.Converters;
+using AutoMapper;
 
 namespace KekManager.AppStartup
 {
@@ -99,6 +100,8 @@ namespace KekManager.AppStartup
                 options.FileProviders.Add(new EmbeddedFileProvider(Assembly.Load("KekManager.Security.Api")));
             });
 
+            services.AddAutoMapper();
+
             // Add Autofac
             var harvester = new DependancyHarvester();
             var containerBuilder = harvester.Harvest(Configuration);
@@ -128,7 +131,7 @@ namespace KekManager.AppStartup
             app.UseStaticFiles();
 
             // Seed database
-            // NOTE: you need to comment db seeding when using migrations, it may cause 'object not found' errors
+            // NOTE: you need to comment out db seeding when using migrations, it may cause 'object not found' errors
             var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
             using (var scope = scopeFactory.CreateScope())
             {

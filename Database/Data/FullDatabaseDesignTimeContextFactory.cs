@@ -18,9 +18,9 @@ namespace KekManager.Database.Data
                 .SetBasePath(AppContext.BaseDirectory)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
 #if DEBUG
-                .AddJsonFile("appsettings.debug.json", optional: false, reloadOnChange: true);
+                .AddJsonFile("appsettings.development.json", optional: false, reloadOnChange: true);
 #else
-                .AddJsonFile("appsettings.release.json", optional: false, reloadOnChange: true);
+                .AddJsonFile("appsettings.production.json", optional: false, reloadOnChange: true);
 #endif
 
             _configuration = builder.Build();

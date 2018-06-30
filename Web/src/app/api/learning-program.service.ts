@@ -45,7 +45,7 @@ export class LearningProgram {
               public readonly level: Level,
               public readonly mode: Mode,
               public readonly modules: Module[],
-              public readonly CNPShours: number) {
+              public readonly cnpsHours: number) {
   }
 }
 

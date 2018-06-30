@@ -14,4 +14,15 @@
     <CodeAnalysisRuleSet>KekManager.Data.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KekManager.Domain\KekManager.Domain.csproj" />
+    <ProjectReference Include="..\KekManager.Logic\KekManager.Logic.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,12 +1,16 @@
-﻿using System;
+﻿using KekManager.Domain;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace KekManager.Domain
+namespace KekManager.Data.Models
 {
-    public class LearningProgram
+    public class LearningProgramModel
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string Specialization { get; set; }
@@ -17,7 +21,7 @@ namespace KekManager.Domain
 
         public Mode Mode { get; set; }
 
-        public IList<Module> Modules { get; set; }
+        public ICollection<ModuleModel> Modules { get; set; }
 
         public int CnpsHours { get; set; }
     }

@@ -41,6 +41,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KekManager.Security.Api.Int
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KekManager.Domain", "KekManager.Domain\KekManager.Domain.csproj", "{F5062BD1-3BC5-4B83-9AF4-047848644167}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KekManager.Logic", "KekManager.Logic\KekManager.Logic.csproj", "{57E87DBF-F461-4CAC-AE12-3C3074D97554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KekManager.Api.Interfaces", "Api\KekManager.Api.Interfaces\KekManager.Api.Interfaces.csproj", "{2F490479-B465-4C2D-80B2-CED5314F79CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +95,14 @@ Global
 		{F5062BD1-3BC5-4B83-9AF4-047848644167}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5062BD1-3BC5-4B83-9AF4-047848644167}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5062BD1-3BC5-4B83-9AF4-047848644167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57E87DBF-F461-4CAC-AE12-3C3074D97554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E87DBF-F461-4CAC-AE12-3C3074D97554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E87DBF-F461-4CAC-AE12-3C3074D97554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E87DBF-F461-4CAC-AE12-3C3074D97554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F490479-B465-4C2D-80B2-CED5314F79CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F490479-B465-4C2D-80B2-CED5314F79CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F490479-B465-4C2D-80B2-CED5314F79CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F490479-B465-4C2D-80B2-CED5314F79CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +118,8 @@ Global
 		{12F94BFF-166D-45EB-9268-D1DADAAC407E} = {F3FDEBC4-E5D4-4418-AC7A-D384325148C4}
 		{79250AA7-26DF-4B81-851D-939D0DE21A9B} = {3796E77D-0D75-49A4-80C9-FF75D14D81C9}
 		{EDB5BD63-3442-497E-AE09-F80688E28E97} = {09F71352-A89F-4D93-BD8B-33688739ACB8}
+		{57E87DBF-F461-4CAC-AE12-3C3074D97554} = {F93689CB-E059-4D35-AD93-A3AF3ED6BAD4}
+		{2F490479-B465-4C2D-80B2-CED5314F79CE} = {14E1116C-6F0C-42D9-8F6D-5F98FCAE2B49}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C305A29-7FD5-421A-A8A5-3E4844858F38}

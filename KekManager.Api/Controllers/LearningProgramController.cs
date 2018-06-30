@@ -7,28 +7,25 @@ using Microsoft.AspNetCore.Mvc;
 using KekManager.Api.Models;
 using Microsoft.AspNetCore.Authorization;
 using KekManager.Domain;
+using KekManager.Api.Interfaces;
 
 namespace KekManager.Api.Controllers
 {
     [Authorize]
     public class LearningProgramController : Controller
     {
+        protected readonly ILearningProgramBl _learningProgramBl;
+
+        public LearningProgramController(ILearningProgramBl learningProgramBl)
+        {
+            _learningProgramBl = learningProgramBl;
+        }
+
         [HttpGet]
         [Route("api/learningPrograms")]
-        public async Task<ActionResult<LearningProgram[]>> All()
+        public async Task<ActionResult<IList<LearningProgram>>> All()
         {
-            LearningProgram[] learningPrograms = new[] {
-                new LearningProgram {
-                    Id = 1,
-                    Level = Level.Inzynierske,
-                    Mode = Mode.Stacjonarne,
-                    Name = "Informatyka",
-                    NumberOfSemesters = 7,
-                    CNPShours = 700
-                }
-            };
-
-            return learningPrograms;
+            return Ok(await _learningProgramBl.GetAll());
         }
     }
 }

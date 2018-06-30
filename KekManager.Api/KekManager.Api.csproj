@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Migrations|AnyCPU'">
-    <CodeAnalysisRuleSet>KekManager.Api-1.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>KekManager.Api.Migrations.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Api\KekManager.Api.Interfaces\KekManager.Api.Interfaces.csproj" />
     <ProjectReference Include="..\KekManager.Domain\KekManager.Domain.csproj" />
   </ItemGroup>
 
