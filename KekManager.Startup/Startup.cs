@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using Newtonsoft.Json.Converters;
 
 namespace KekManager.AppStartup
 {
@@ -85,7 +86,11 @@ namespace KekManager.AppStartup
             services
                 .AddMvc()
                 .AddApplicationPart(Assembly.Load("KekManager.Api"))
-                .AddApplicationPart(Assembly.Load("KekManager.Security.Api"));
+                .AddApplicationPart(Assembly.Load("KekManager.Security.Api"))
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.Converters.Add(new StringEnumConverter());
+                });
 
             // Fix resolving views from different assemblies
             services.Configure<RazorViewEngineOptions>(options =>
