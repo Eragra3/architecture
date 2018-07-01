@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\KekManager.Database.Interfaces\KekManager.Database.Interfaces.csproj" />
     <ProjectReference Include="..\KekManager.Domain\KekManager.Domain.csproj" />
     <ProjectReference Include="..\KekManager.Logic\KekManager.Logic.csproj" />
   </ItemGroup>

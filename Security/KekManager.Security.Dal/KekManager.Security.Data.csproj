@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\KekManager.Database.Interfaces\KekManager.Database.Interfaces.csproj" />
     <ProjectReference Include="..\KekManager.Security.Domain\KekManager.Security.Domain.csproj" />
   </ItemGroup>
 

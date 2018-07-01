@@ -27,5 +27,12 @@ namespace KekManager.Api.Controllers
         {
             return Ok(await _learningProgramBl.GetAll());
         }
+
+        [HttpPost]
+        [Route("api/learningProgram")]
+        public async Task<ActionResult<LearningProgram>> Add([FromBody] AddLearningProgramParam model)
+        {
+            return await _learningProgramBl.Add(model);
+        }
     }
 }

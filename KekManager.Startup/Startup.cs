@@ -99,7 +99,8 @@ namespace KekManager.AppStartup
                 options.FileProviders.Add(new EmbeddedFileProvider(Assembly.Load("KekManager.Security.Api")));
             });
 
-            services.AddAutoMapper();
+            // Force AutoMapper to find profiles in all relevant assemblies
+            services.AddAutoMapper(Assembly.Load("KekManager.Logic"));
 
             // Add Autofac
             var harvester = new DependancyHarvester();

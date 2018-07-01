@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KekManager.Logic.Interfaces;
+using KekManager.Data.Models;
 
 namespace KekManager.Data.Repositories
 {
@@ -21,6 +22,14 @@ namespace KekManager.Data.Repositories
         {
             _context = context;
             _mapper = mapper;
+        }
+
+        public async Task<LearningProgram> Add(LearningProgram param)
+        {
+            var entity = _mapper.Map<LearningProgramModel>(param);
+            var result = await _context.LearningProgram.AddAsync(entity);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<LearningProgram>(result.Entity);
         }
 
         public async Task<IList<LearningProgram>> GetAll()

@@ -7,11 +7,11 @@ using System.Text;
 
 namespace KekManager.Data
 {
-    public class MainMapperProfile : Profile
+    public class DataMapperProfile : Profile
     {
-        public MainMapperProfile()
+        public DataMapperProfile()
         {
-            CreateMap<LearningProgramModel, LearningProgram>();
+            CreateMap<LearningProgramModel, LearningProgram>().ReverseMap();
             CreateMap<ModuleModel, Module>();
         }
     }

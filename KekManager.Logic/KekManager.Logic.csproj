@@ -13,6 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Api\KekManager.Api.Interfaces\KekManager.Api.Interfaces.csproj" />
     <ProjectReference Include="..\KekManager.Domain\KekManager.Domain.csproj" />
   </ItemGroup>

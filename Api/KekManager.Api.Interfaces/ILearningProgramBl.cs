@@ -9,5 +9,7 @@ namespace KekManager.Api.Interfaces
     public interface ILearningProgramBl
     {
         Task<IList<LearningProgram>> GetAll();
+
+        Task<LearningProgram> Add(AddLearningProgramParam param);
     }
 }

@@ -9,5 +9,7 @@ namespace KekManager.Logic.Interfaces
     public interface ILearningProgramRepository
     {
         Task<IList<LearningProgram>> GetAll();
+
+        Task<LearningProgram> Add(LearningProgram param);
     }
 }
