@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Lecturer, LecturerService} from "../api/lecturer.service";
+import {ResearchFellow, LecturerService} from "../api/lecturer.service";
 import {Subject, SubjectService} from "../api/subject.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 
@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class SubjectPanelComponent implements OnInit {
 
   subjects: Subject[];
-  lecturers: Lecturer[];
+  lecturers: ResearchFellow[];
   form: FormGroup;
 
   constructor(private lecturerService: LecturerService, private subjectService: SubjectService, private fb: FormBuilder) {

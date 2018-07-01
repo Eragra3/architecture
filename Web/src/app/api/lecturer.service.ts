@@ -2,38 +2,40 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/of';
+import {environment} from "environments/environment";
 
 
 @Injectable()
 export class LecturerService {
 
-  store: Lecturer[] = [
-    new Lecturer(0, "Kowalski", "Jan"),
-    new Lecturer(1, "Kowalski1", "Jan"),
-    new Lecturer(2, "Kowalski2", "Jan"),
-    new Lecturer(3, "Kowalski3", "Jan"),
-    new Lecturer(4, "Kowalski4", "Jan")
+  store: ResearchFellow[] = [];
 
-  ];
-
-  constructor(http: HttpClient) {
+  constructor(private _http: HttpClient) {
 
   }
 
-  getList(): Observable<Lecturer[]> {
-    return Observable.of(this.store);
+  getList(): Observable<ResearchFellow[]> {
+    return this._http
+    .get<ResearchFellow[]>(environment.baseUrl + "api/researchFellows")
+    .map(researchFellows => {
+      this.store = researchFellows;
+      return this.store;
+    })
+    .catch(err => {
+      return Observable.of(null);
+    });
   }
 
-  getLecturer(id: number): Observable<Lecturer> {
+  getLecturer(id: number): Observable<ResearchFellow> {
     return Observable.of(this.store.find(l => l.id === id));
   }
 
 }
 
-
-export class Lecturer {
+export class ResearchFellow {
   constructor(public readonly id: number,
-              public readonly surname: string,
-              public readonly name: string) {
+              public readonly firstName: string,
+              public readonly lastName: string,
+              public readonly title: string) {
   }
 }
