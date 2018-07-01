@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LearningProgram, LearningProgramService, Level, Mode} from "../api/learning-program.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-learning-program',
@@ -11,7 +12,9 @@ export class CreateLearningProgramComponent implements OnInit {
   levels = this.service.getEnumValues(Level);
   modes = this.service.getEnumValues(Mode);
 
-  constructor(private service: LearningProgramService) {
+  showError = false;
+
+  constructor(private service: LearningProgramService, private router: Router) {
   }
 
   ngOnInit() {
@@ -19,8 +22,16 @@ export class CreateLearningProgramComponent implements OnInit {
   }
 
   submit(value) {
+    this.showError = false;
     this.service
-      .create(new LearningProgram(undefined, value.name, value.specialization, value.numberOfSemesters, value.level, value.mode, [], value.cnps))
+      .create(new LearningProgram(0, value.name, value.specialization, value.numberOfSemesters, value.level, value.mode, [], value.cnps))
+      .subscribe((learningProgram) => {
+        if (learningProgram != null) {
+          this.router.navigateByUrl('learning-program')
+        } else {
+          this.showError = true;
+        }
+      })
   }
 
 }

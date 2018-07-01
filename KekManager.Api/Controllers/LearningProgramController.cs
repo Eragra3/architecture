@@ -32,6 +32,11 @@ namespace KekManager.Api.Controllers
         [Route("api/learningProgram")]
         public async Task<ActionResult<LearningProgram>> Add([FromBody] AddLearningProgramParam model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             return await _learningProgramBl.Add(model);
         }
     }

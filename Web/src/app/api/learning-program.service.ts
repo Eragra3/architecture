@@ -24,10 +24,19 @@ export class LearningProgramService {
     });
   }
 
-  create(program: LearningProgram): Observable<boolean> {
-    console.log(program);
-    this.store.push(program);
-    return Observable.of(true);
+  create(program: LearningProgram): Observable<LearningProgram | null> {
+    return this._http
+    .post<LearningProgram>(
+      environment.baseUrl + "api/learningProgram",
+      program
+    )
+    .map(addedEntity => {
+      this.store.push(addedEntity);
+      return Observable.of(addedEntity);
+    })
+    .catch(err => {
+      return Observable.of(null);
+    });
   }
 
   getEnumValues(e: any) {

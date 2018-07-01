@@ -29,6 +29,7 @@
         <option *ngFor="let m of modes" [ngValue]="m">{{ m }}</option>
       </select>
     </div>
+    <span style="color:red" *ngIf="showError">Błąd serwera, spróbuj ponownie później</span>
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>

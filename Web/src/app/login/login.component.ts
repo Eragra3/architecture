@@ -18,12 +18,14 @@ export class LoginComponent implements OnInit {
   }
 
   submit(value) {
-    this.service.login(value.username, value.password).subscribe((bool) => {
-      if (bool) {
+    this.showError = false;
+
+    this.service.login(value.username, value.password).subscribe((success) => {
+      if (success) {
         this.router.navigateByUrl('learning-program')
       } else {
         this.showError = true;
       }
-    })
+    });
   }
 }
