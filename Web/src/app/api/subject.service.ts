@@ -2,28 +2,41 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/of';
+import { environment } from "environments/environment";
 
 
 @Injectable()
 export class SubjectService {
 
-  store: Subject[] = [
-    new Subject(0, "Subject", 0, [new PEK(0, 'PEK_W01'), new PEK(1, 'PEK_L01')]),
-    new Subject(1, "Subject1", 1, [new PEK(2, 'PEK_W01'), new PEK(3, 'PEK_L01')]),
-    new Subject(2, "Subject2", 2, [new PEK(4, 'PEK_W01')])
-  ];
+  store: Subject[] = [];
 
-  constructor(http: HttpClient) {
+  constructor(private _http: HttpClient) {
 
   }
 
   getList(): Observable<Subject[]> {
-    return Observable.of(this.store);
+    return this._http
+    .get<Subject[]>(environment.baseUrl + "api/subjects")
+    .map(subject => {
+      this.store = subject;
+      return this.store;
+    })
+    .catch(err => {
+      return Observable.of(null);
+    });
   }
 
-  assignLecturer(subjectId: number, lecturer: number): Observable<boolean> {
-    this.store.map(sub => sub.id === subjectId ? new Subject(sub.id, sub.name, lecturer, sub.peks) : sub);
-    return Observable.of(true);
+  assignLecturer(subjectId: number, lecturer: number | null): Observable<boolean> {
+    const lecturerParam = lecturer == null ? 'null' : lecturer;
+    return this._http
+    .patch<Subject>(environment.baseUrl + `api/subject/${subjectId}/supervisor/${lecturerParam}`,null)
+    .map(subject => {
+      this.store.map(sub => sub.id === subject.id ? subject : sub);
+      return true;
+    })
+    .catch(err => {
+      return Observable.of(false);
+    });
   }
 
 }
@@ -32,7 +45,7 @@ export class SubjectService {
 export class Subject {
   constructor(public readonly id: number,
               public readonly name: string,
-              public readonly lecturerId: number,
+              public readonly supervisorId: number,
               public readonly peks: PEK[]) {
   }
 }

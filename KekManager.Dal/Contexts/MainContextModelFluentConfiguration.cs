@@ -76,14 +76,28 @@ namespace KekManager.Data.Contexts
                     });
                 });
 
+            builder.Entity<SubjectKekJoinModel>()
+                .HasKey(j => new { j.KekId, j.SubjectId });
+
             builder
                 .Entity<ResearchFellowModel>(entity =>
                 {
-                    entity.HasData(new []
+                    entity.HasData(new[]
                     {
                         new ResearchFellowModel { Id = 1, UserId = 3, FirstName = "Daniel", LastName = "Bider", Title = "inż." },
                         new ResearchFellowModel { Id = 2, UserId = null, FirstName = "Szymon", LastName = "Barańczyk", Title = "inż." },
                         new ResearchFellowModel { Id = 3, UserId = null, FirstName = "John", LastName = "Doe", Title = "mgr inż." }
+                    });
+                });
+
+            builder
+                .Entity<SubjectModel>(entity =>
+                {
+                    entity.HasData(new[] {
+                        new SubjectModel {Id = 1, Name = "Teleinformatyka", SupervisorId = 3},
+                        new SubjectModel {Id = 2, Name = "Algorytmy i Struktury Danych", SupervisorId = 1},
+                        new SubjectModel {Id = 3, Name = "Projektowanie Systemów Informatycznych II", SupervisorId = null},
+                        new SubjectModel {Id = 4, Name = "Analiza Matematyczna I", SupervisorId = null}
                     });
                 });
         }

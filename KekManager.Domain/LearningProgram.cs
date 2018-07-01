@@ -20,5 +20,7 @@ namespace KekManager.Domain
         public IList<Module> Modules { get; set; }
 
         public int CnpsHours { get; set; }
+
+        public ICollection<Kek> Keks { get; set; }
     }
 }

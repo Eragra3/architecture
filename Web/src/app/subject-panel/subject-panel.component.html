@@ -18,6 +18,8 @@
       </tr>
       </tbody>
     </table>
+    <span style="color:green" *ngIf="showSuccess">Zaktualizowano opiekunów</span>
+    <span style="color:red" *ngIf="showError">Błąd serwera, spróbuj ponownie później</span>
     <button type="submit" class="btn btn-primary" (click)="submit()">Save</button>
   </form>
 </div>

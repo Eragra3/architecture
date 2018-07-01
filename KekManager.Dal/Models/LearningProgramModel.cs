@@ -24,5 +24,7 @@ namespace KekManager.Data.Models
         public ICollection<ModuleModel> Modules { get; set; }
 
         public int CnpsHours { get; set; }
+
+        public ICollection<KekModel> Keks { get; set; }
     }
 }

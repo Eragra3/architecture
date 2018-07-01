@@ -20,6 +20,12 @@ namespace KekManager.Database.Data
 
         public DbSet<ResearchFellowModel> ResearchFellow { get; set; }
 
+        public DbSet<PekModel> Pek { get; set; }
+
+        public DbSet<KekModel> Kek { get; set; }
+
+        public DbSet<SubjectModel> Subject { get; set; }
+
         public FullDatabaseContext(DbContextOptions<FullDatabaseContext> options)
             : base(options)
         {
