@@ -8,14 +8,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using KekManager.Security.Api.Models.AccountViewModels;
-using KekManager.Security.Api.Services;
 using KekManager.Security.Domain;
 using KekManager.Security.Logic;
 using System.Net;
 using KekManager.Security.Api.Interfaces;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.IdentityModel.Tokens.Jwt;
+using KekManager.Security.Api.Models.AccountViewModels;
 
 namespace KekManager.Security.Api.Controllers
 {
