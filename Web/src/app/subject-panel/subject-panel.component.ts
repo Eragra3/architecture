@@ -46,7 +46,12 @@ export class SubjectPanelComponent implements OnInit {
     this.showError = false;
     this.showSuccess = false;
 
-    const lects: number[] = this.form.get('lecturers').value;
+    const lects: number[] = this.form.get('lecturers').value.map(l => {
+      if (l == '' || l == null) {
+        return null;
+      }
+      return l;
+    });
     
     var jobs = lects.map((l, i) => this.subjectService.assignLecturer(this.subjects[i].id, l));
     
