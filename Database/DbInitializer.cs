@@ -44,6 +44,12 @@ namespace KekManager.Database
                 await _roleManager.CreateAsync(new IdentityRole("User"));
             }
 
+            if (!await _roleManager.RoleExistsAsync("ResearchFellow"))
+            {
+                //Create the User Role
+                await _roleManager.CreateAsync(new IdentityRole("ResearchFellow"));
+            }
+            
             {
                 var admin = new SecurityUser
                 {
@@ -72,6 +78,22 @@ namespace KekManager.Database
                 {
                     await _userManager.CreateAsync(user, "1qaz@WSX");
                     await _userManager.AddToRoleAsync(await _userManager.FindByNameAsync(user.UserName), "User");
+                }
+            }
+
+            {
+                //Create example endpoint user account
+                var user = new SecurityUser
+                {
+                    UserName = "john.doe",
+                    Email = "john.doe@pwr.edu.pl",
+                    EmailConfirmed = true
+                };
+                if (await _userManager.FindByNameAsync(user.UserName) == null)
+                {
+                    await _userManager.CreateAsync(user, "1qaz@WSX");
+                    await _userManager.AddToRoleAsync(await _userManager.FindByNameAsync(user.UserName), "User");
+                    await _userManager.AddToRoleAsync(await _userManager.FindByNameAsync(user.UserName), "ResearchFellow");
                 }
             }
         }

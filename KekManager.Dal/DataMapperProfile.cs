@@ -12,6 +12,7 @@ namespace KekManager.Data
         public DataMapperProfile()
         {
             CreateMap<LearningProgramModel, LearningProgram>().ReverseMap();
+            CreateMap<ResearchFellowModel, ResearchFellow>().ReverseMap();
             CreateMap<ModuleModel, Module>();
         }
     }

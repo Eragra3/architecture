@@ -12,5 +12,7 @@ namespace KekManager.Data.Contexts
         DbSet<LearningProgramModel> LearningProgram { get; set; }
 
         DbSet<ModuleModel> Module { get; set; }
+
+        DbSet<ResearchFellowModel> ResearchFellow { get; set; }
     }
 }

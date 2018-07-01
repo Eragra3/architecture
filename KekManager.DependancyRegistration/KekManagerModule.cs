@@ -17,6 +17,8 @@ namespace KekManager.DependancyRegistration
             builder.RegisterType<DbInitializer>().As<IDbInitializer>();
             builder.RegisterType<LearningProgramBl>().As<ILearningProgramBl>();
             builder.RegisterType<LearningProgramRepository>().As<ILearningProgramRepository>();
+            builder.RegisterType<ResearchFellowBl>().As<IResearchFellowBl>();
+            builder.RegisterType<ResearchFellowRepository>().As<IResearchFellowRepository>();
             builder.RegisterType<FullDatabaseContext>().As<IMainDbContext, ISecurityDbContext>();
         }
     }

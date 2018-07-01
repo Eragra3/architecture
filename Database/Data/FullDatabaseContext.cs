@@ -18,6 +18,8 @@ namespace KekManager.Database.Data
 
         public DbSet<ModuleModel> Module { get; set; }
 
+        public DbSet<ResearchFellowModel> ResearchFellow { get; set; }
+
         public FullDatabaseContext(DbContextOptions<FullDatabaseContext> options)
             : base(options)
         {

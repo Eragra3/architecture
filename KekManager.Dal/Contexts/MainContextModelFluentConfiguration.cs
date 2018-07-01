@@ -75,6 +75,17 @@ namespace KekManager.Data.Contexts
                         new ModuleModel { Id = 10, Name = "Przedmioty Humanistyczne", Area = CourseArea.NaukiHumanistyczne, LearningProgramId = 4 },
                     });
                 });
+
+            builder
+                .Entity<ResearchFellowModel>(entity =>
+                {
+                    entity.HasData(new []
+                    {
+                        new ResearchFellowModel { Id = 1, UserId = 3, FirstName = "Daniel", LastName = "Bider", Title = "inż." },
+                        new ResearchFellowModel { Id = 2, UserId = null, FirstName = "Szymon", LastName = "Barańczyk", Title = "inż." },
+                        new ResearchFellowModel { Id = 3, UserId = null, FirstName = "John", LastName = "Doe", Title = "mgr inż." }
+                    });
+                });
         }
     }
 }
