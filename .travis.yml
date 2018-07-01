@@ -6,7 +6,7 @@ before_install:
   - chmod +x ./SonarCloud/sonar-scanner-3.1.0.1141/bin/sonar-scanner
 script:
   - dotnet restore KekManager.sln
-  - sh build_client.sh
+  - sh -v build_client.sh
   - dotnet ./SonarCloud/SonarScanner.MSBuild.dll begin /k:"KekManager" /n:"" /d:sonar.organization="eragra3-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="ee89d26215f97e2f576e0577e990cc8ecb1c2d2c"
   - dotnet build KekManager.sln
   - dotnet ./SonarCloud/SonarScanner.MSBuild.dll end /d:sonar.login="ee89d26215f97e2f576e0577e990cc8ecb1c2d2c"
