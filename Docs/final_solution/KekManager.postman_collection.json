@@ -1,0 +1,201 @@
+{
+	"variables": [],
+	"info": {
+		"name": "KekManager",
+		"_postman_id": "b7cded94-1412-83f2-4d43-d59f7698ae45",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Security",
+			"description": "",
+			"item": [
+				{
+					"name": "Hearbeat",
+					"request": {
+						"url": "http://localhost:54282/api/security/heartbeat/hello",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Hearbeat Secret",
+					"request": {
+						"url": "http://localhost:54282/api/security/heartbeat/secrethello",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInsR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5Aa2VrbWFuYWdlci5jb20iLCJqdGkiOiI5MzE0Y2Q5NC1kOTRlLTQ5Y2YtYmI3Ny0xODNmMzdhOTdlZDMiLCJleHAiOjE1MzAzNjEyNzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTQyODIvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1NDI4Mi8ifQ.mBrWD8lpni28AZrmV8W2L9w2m7RAaV6HCplDiMcsffk",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"url": "http://localhost:54282/api/security/account/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"admin@kekmanager.com\",\n\t\"password\": \"1qaz@WSX\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"url": "http://localhost:54282/api/security/account/refreshToken",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5Aa2VrbWFuYWdlci5jb20iLCJqdGkiOiJiMTQ1ODIyOC1jMGViLTQ3MTctYTBiMC1hYTYwYzgwMzkzZDgiLCJleHAiOjE1MzA0MDIwNDQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTQyODIvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1NDI4Mi8ifQ.Hnwb8QZ1c-jv67l_JyufjlXHHgNBpNp7boOUEdnFnbg",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"admin@kekmanager.com\",\n\t\"password\": \"1qaz@WSX\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LearningProgram",
+			"description": "",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"url": "http://localhost:54282/api/learningPrograms",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5Aa2VrbWFuYWdlci5jb20iLCJqdGkiOiI3NDA1NWU1MC1kMWVhLTRlODgtYjJiOC0wMmMxMjNkYjZiYmIiLCJleHAiOjE1MzA0MDc1OTksImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTQyODIvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1NDI4Mi8ifQ.dc7EQzItM3c4ZWH5zZi66l0y47jOfhJATp-kJltAVaU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add",
+					"request": {
+						"url": "http://localhost:54282/api/learningProgram",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5Aa2VrbWFuYWdlci5jb20iLCJqdGkiOiIxMjkxMzk3ZS00NTBmLTQ4NzQtYjRmOS0wODQ4NzQ4NTExOTAiLCJleHAiOjE1MzA0MDUyOTEsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTQyODIvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1NDI4Mi8ifQ.J66hNk3ywQGRmtqVuI-oMpafv4Iq8Zf6iixRyISXsWU",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test\",\n\t\"NumberOfSemesters\": 7,\n\t\"CnpsHours\": 700\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ResearchFellow",
+			"description": "",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"url": "http://localhost:54282/api/researchFellows",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5Aa2VrbWFuYWdlci5jb20iLCJqdGkiOiI3NDA1NWU1MC1kMWVhLTRlODgtYjJiOC0wMmMxMjNkYjZiYmIiLCJleHAiOjE1MzA0MDc1OTksImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTQyODIvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1NDI4Mi8ifQ.dc7EQzItM3c4ZWH5zZi66l0y47jOfhJATp-kJltAVaU",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subject",
+			"description": "",
+			"item": [
+				{
+					"name": "GetAll",
+					"request": {
+						"url": "http://localhost:54282/api/subjects",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5Aa2VrbWFuYWdlci5jb20iLCJqdGkiOiIwMTM4OWQ3NS0xMTIzLTRmMzYtYmVhNS02ZGQzODBiNGVjZmYiLCJleHAiOjE1MzA0NDk3NjUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTQyODIvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1NDI4Mi8ifQ.8ur-BpWXbk0LhS5w5jT2n9-YlTQO0FdVPHQiKF3EdOg",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SetSupervisor",
+					"request": {
+						"url": "http://localhost:54282/api/subject/4/supervisor/1",
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImVtYWlsIjoiYWRtaW5Aa2VrbWFuYWdlci5jb20iLCJqdGkiOiI1NDJlY2MzNC03N2E3LTQzZWUtYmFlYS0xNTNkNzFkZmZjNmQiLCJleHAiOjE1MzA0NDk5MTIsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTQyODIvIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo1NDI4Mi8ifQ.FSldvDm9XBx6EnMdQh-Yt7Hjro8uzyx3fs7kRL2BJIo",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
